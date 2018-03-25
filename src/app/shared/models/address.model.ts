@@ -1,13 +1,15 @@
-export interface AddressModel{
-    street:          string;
-    city:            string;
-    municipality:    string;
-    province:        string;
-    postcode:        string;
-    pnum:            string;
-    pchar:           string;
-    rd_x:            string;
-    rd_y:            string;
-    lat:             string;
-    lon:             string;   
+export class AddressModel{
+    constructor(
+    public street:          string,
+    public city:            string,
+    public municipality:    string,
+    public province:        string,
+    public postcode:        string,
+    public pnum:            string,
+    public pchar:           string,
+    public rd_x:            string,
+    public rd_y:            string,
+    public lat:             number,
+    public lon:             number
+    ){}  
 }

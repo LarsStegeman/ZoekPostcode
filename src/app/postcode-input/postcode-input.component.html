@@ -2,6 +2,10 @@
 <input type="text" #houseNumber  placeholder="00">
 <button (click)="getAddress(postcode.value, houseNumber.value)">Zoek</button>
 
-
-
-<p>{{postcodeResult | json }}</p>
+<div *ngIf="postcodeResult">
+<h1>{{postcodeResult.street}},{{postcodeResult.pnum}},{{postcodeResult.city}},{{postcodeResult.province}}</h1>
+<agm-map [latitude]="postcodeResult.lat" [longitude]="postcodeResult.lon">
+    <agm-marker [latitude]="postcodeResult.lat" [longitude]="postcodeResult.lon"></agm-marker>
+</agm-map>
+</div>
+<button (click)="initMap()">Toon Map</button>

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
 import { PostcodeService } from '../shared/services/postcode.service';
-
 import { AddressModel } from '../shared/models/address.model';
 
 @Component({
@@ -16,11 +14,15 @@ export class PostcodeInputComponent implements OnInit {
   ngOnInit() {
   }
 
-  postcodeResult: any;
+  postcodeResult: AddressModel;
 
   getAddress(postcode: string, houseNumber: string){
       console.log('Button Clicked:' + postcode + ' ' + houseNumber );
-      this.postcodeService.getAddress(postcode,houseNumber).subscribe(res => console.log(res.city));
+      this.postcodeService.getAddress(postcode,houseNumber).subscribe((res:AddressModel) => this.postcodeResult = res);
   }
+
+
+ 
+
 
 }
