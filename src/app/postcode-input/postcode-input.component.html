@@ -1,0 +1,7 @@
+<input type="text" #postcode placeholder="1234AB">
+<input type="text" #houseNumber  placeholder="00">
+<button (click)="getAddress(postcode.value, houseNumber.value)">Zoek</button>
+
+
+
+<p>{{postcodeResult | json }}</p>
