@@ -15,14 +15,25 @@ export class PostcodeInputComponent implements OnInit {
   }
 
   postcodeResult: AddressModel;
+  errorMessage: string;
+  showMap: boolean;
 
   getAddress(postcode: string, houseNumber: string){
+      this.errorMessage = null;
+      this.showMap=false;
       console.log('Button Clicked:' + postcode + ' ' + houseNumber );
-      this.postcodeService.getAddress(postcode,houseNumber).subscribe((res:AddressModel) => this.postcodeResult = res);
+      this.postcodeService.getAddress(postcode,houseNumber).subscribe(
+          (res) => {
+              if(res instanceof AddressModel){
+                this.postcodeResult = res;
+              }else{
+                this.postcodeResult = null;
+                this.errorMessage = res;
+            }
+          });
   }
 
-
- 
-
-
+  initMap(){
+    this.showMap = !this.showMap;
+  }
 }
