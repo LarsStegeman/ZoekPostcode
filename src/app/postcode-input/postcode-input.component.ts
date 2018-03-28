@@ -36,4 +36,12 @@ export class PostcodeInputComponent implements OnInit {
   initMap(){
     this.showMap = !this.showMap;
   }
+
+  clear(postcode, houseNumber){
+      postcode.value = '';
+      houseNumber.value ='';
+      this.postcodeResult = null;
+      this.showMap = false;
+      this.errorMessage = null;
+  }
 }
