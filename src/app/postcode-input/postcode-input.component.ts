@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostcodeService } from '../shared/services/postcode.service';
 import { AddressModel } from '../shared/models/address.model';
 
+
 @Component({
   selector: 'app-postcode-input',
   templateUrl: './postcode-input.component.html',
@@ -44,4 +45,5 @@ export class PostcodeInputComponent implements OnInit {
       this.showMap = false;
       this.errorMessage = null;
   }
+
 }

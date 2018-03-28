@@ -1,13 +1,21 @@
-<input type="text" #postcode placeholder="1234AB">
-<input type="text" #houseNumber  placeholder="00">
-<button (click)="getAddress(postcode.value, houseNumber.value)">Zoek</button>
-<button (click)= "clear(postcode,houseNumber)">Leegmaken</button>
+<div>
+    <mat-form-field>    
+        <input matInput  type="text" #postcode placeholder="Postcode">
+    </mat-form-field>  
+    <mat-form-field>      
+        <input matInput  type="text" #houseNumber  placeholder="Huisnummer">
+    </mat-form-field>  
+</div>
+<br>
+<button mat-raised-button color="primary" (click)="getAddress(postcode.value, houseNumber.value)">Zoek</button>
+<button mat-raised-button (click)= "clear(postcode,houseNumber)">Leegmaken</button>
+
 <div *ngIf="errorMessage">
-    <p>{{errorMessage}}</p>
+    <p class="error_color animated shake">{{errorMessage}}</p>
 </div>
 <div *ngIf="postcodeResult">
-    <h1>{{postcodeResult.street}},{{postcodeResult.city}},{{postcodeResult.province}}</h1>
-    <button (click)="initMap()">Toon Map</button>
+    <h1>{{postcodeResult.street}}, {{postcodeResult.city}}, {{postcodeResult.province}}</h1>
+    <mat-button-toggle (click)="initMap()">Toon Map</mat-button-toggle>
     <div *ngIf="showMap">
         <agm-map [latitude]="postcodeResult.lat" [longitude]="postcodeResult.lon">
             <agm-marker [latitude]="postcodeResult.lat" [longitude]="postcodeResult.lon"></agm-marker>
